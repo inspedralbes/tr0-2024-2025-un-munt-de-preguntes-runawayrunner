@@ -15,7 +15,10 @@ if (!isset($_SESSION['preguntesSeleccionades'])) {
             $preguntesSeleccionades[] = $preguntes[$posAleatoria];
         }
     }
+    $_SESSION['preguntesSeleccionades'] = $preguntesSeleccionades;
+} else {
+    $preguntesSeleccionades = $_SESSION['preguntesSeleccionades'];
 }
 
-echo js_encode($preguntesSeleccionades);
+echo json_encode($preguntesSeleccionades);
 ?>

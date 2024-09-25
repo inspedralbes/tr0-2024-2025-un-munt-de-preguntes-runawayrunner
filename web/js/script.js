@@ -22,11 +22,16 @@ function començarPartit() {
             htmlString += `<table><tr>`;
             for (let indexResposta = 0; indexResposta < opcions.length; indexResposta++) {
                 resposta = pregunta.respostes[indexResposta];
-                htmlString += `<td><button>${opcions[indexResposta]}</button></td><td>${resposta.resposta}</td></tr>`;
+                htmlString += `<td><button onclick="processarResposta()">${opcions[indexResposta]}</button></td><td>${resposta.resposta}</td></tr>`;
             }
         }
-          
         document.getElementById("partida").innerHTML = htmlString;
+    }
+
+    function processarResposta() {
+        console.log(`HOLA`);
+        //console.log(`Pregunta: ${indexResposta + 1}, Opcion seleccionada: ${pregunta.respostes[indexResposta].resposta}`);
+        
     }
 }
 

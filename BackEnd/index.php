@@ -1,13 +1,10 @@
-<?php
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Act2: Aivan Antonio</title>
+    <title>BackEnd/PHP</title>
 </head>
 <body>
     <?php
@@ -16,44 +13,88 @@
     $datos = json_decode($jsonFile, true);
     $preguntes = $datos["preguntes"];
     $totalPreguntes = count($preguntes);
-    $posPreguntaActual = 0;
     $arrayOpcions = ['A', 'B', 'C'];
-    ?>
-    <div id ="partida">
-        <?php
-        if (!isset($_POST['preguntaActual'])) {
 
-            // guarda las 10 preguntas selecionadas
-            $preguntesSeleccionades = []; 
-            // guarda la posi de las preguntas selecionadas del .json
-            $posPreguntesSeleccionades = [];
-            
-            while (count($preguntesSeleccionades) < 10) {
-                $posAleatoria = rand(0, $totalPreguntes - 1);
-                
-                // comproba si la posicion selecionada ya esta eligida
-                if (!in_array($posAleatoria, $posPreguntesSeleccionades)) {
-                    $preguntesSeleccionades[] = $preguntes[$posAleatoria];
-                    $posPreguntesSeleccionades[] = $posAleatoria;
-                }
+    if (!isset($_SESSION['preguntesSeleccionades'])) {
+        $preguntesSeleccionades = []; 
+        
+        while (count($preguntesSeleccionades) < 10) {
+            $posAleatoria = rand(0, $totalPreguntes - 1);
+            if (!in_array($preguntes[$posAleatoria], $preguntesSeleccionades)) {
+                $preguntesSeleccionades[] = $preguntes[$posAleatoria];
             }
         }
-        $preguntaActual = $preguntesSeleccionades[$posPreguntaActual];
-        ?>
-        <h4>Progress: <?=  $posPreguntaActual?>%</h4>
-        <h2><?= $preguntaActual["pregunta"]?></h2>
+        $_SESSION['preguntesSeleccionades'] = $preguntesSeleccionades;
+        $_SESSION['posPreguntaActual'] = 0; 
+        $_SESSION['score'] = 0; 
+    }
+
+    $preguntesSeleccionades = $_SESSION['preguntesSeleccionades'];
+    $posPreguntaActual = $_SESSION['posPreguntaActual'];
+    $preguntaActual = $preguntesSeleccionades[$posPreguntaActual];
+
+    if (isset($_POST['respuestaSeleccionada'])) {
+        $respuestaSeleccionada = $_POST['respuestaSeleccionada'];
+        $respostes = $preguntaActual['respostes'];
+
+        $correcta = false;
+        foreach ($respostes as $resposta) {
+            if ($resposta['id'] == $respuestaSeleccionada && $resposta['correcta']) {
+                $correcta = true;
+                break;
+            }
+        }
+
+        if ($correcta) {
+            $_SESSION['score']++;
+            $mensaje = "¡Correcto!";
+        } else {
+            $respuestaCorrecta = array_search(true, array_column($respostes, 'correcta')) + 1;
+            $mensaje = "Incorrecto. La respuesta correcta era: " . $respuestaCorrecta;
+        }
+
+        $_SESSION['posPreguntaActual']++;
+
+        if ($_SESSION['posPreguntaActual'] >= count($preguntesSeleccionades)) {
+            echo "<div id='partida'>";
+            echo "<h3>¡Has terminado el cuestionario!</h3>";
+            echo "<p>Tu puntuación es: " . $_SESSION['score'] . "/" . count($preguntesSeleccionades) . "</p>";
+            echo '<form method="post"><button type="submit" name="reiniciar">Reiniciar</button></form></div>';
+            session_destroy(); 
+            exit;
+        }
+    }
+
+    if (!isset($mensaje)) {
+        $mensaje = ""; 
+    }
+
+    $preguntaActual = $preguntesSeleccionades[$posPreguntaActual];
+    ?>
+
+    <div id="partida">
+        <h4>Pregunta: <?= $posPreguntaActual + 1 ?> / <?= count($preguntesSeleccionades) ?></h4>
+        <h2><?= $preguntaActual["pregunta"] ?></h2>
         <table>
             <tr>
-        <?php
-            foreach ($preguntaActual["respostes"] as $index => $resposta) {
-                $letra = $arrayOpcions[$index];
-                ?>
-                    <td><button onclick=""><?= $letra ?></button></td><td><p><?= $resposta["resposta"] ?></p></td></tr>
+            <form method="POST">
                 <?php
-            }
-        ?>
+                foreach ($preguntaActual["respostes"] as $index => $resposta) {
+                    $letra = $arrayOpcions[$index];
+                    ?>
+                    <td>
+                        <button type="submit" name="respuestaSeleccionada" value="<?= $resposta['id'] ?>">
+                            <?= $letra ?>
+                        </button>
+                    </td>
+                    <td><p><?= $resposta["resposta"] ?></p></td></tr>
+                    <?php
+                }
+                ?>
+                </form>
+            </tr>
         </table>
+        <h3><?= $mensaje ?></h3>
     </div>
-</div>
 </body>
 </html>

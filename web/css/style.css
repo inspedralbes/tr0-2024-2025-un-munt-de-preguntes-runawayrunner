@@ -14,6 +14,14 @@ body {
     padding: 20px;
 }
 
+#butoncomençar {
+    display: flex;                 
+    justify-content: center;       
+    align-items: center;          
+    height: 20vh;               
+    background-color: #f0f0f0;   
+}
+
 button {
     padding: 10px 20px;
     margin: 10px 5px;

@@ -20,7 +20,7 @@
             "correcta": false
           }
         ],
-        "imatge": "https://exemple.com/bmw.jpg"
+        "imatge": "web/img/foto1.jpg"
       },
       {
         "id": 2,
@@ -42,7 +42,7 @@
             "correcta": true
           }
         ],
-        "imatge": "https://exemple.com/distance.jpg"
+        "imatge": "web/img/foto2.jpg"
       },
       {
         "id": 3,
@@ -64,7 +64,7 @@
             "correcta": false
           }
         ],
-        "imatge": "https://exemple.com/no_entry.jpg"
+        "imatge": "web/img/foto3.png"
       },
       {
         "id": 4,
@@ -86,7 +86,7 @@
             "correcta": false
           }
         ],
-        "imatge": "https://exemple.com/cruise_control.jpg"
+        "imatge": "web/img/foto4.jpg"
       },
       {
         "id": 5,
@@ -108,7 +108,7 @@
             "correcta": false
           }
         ],
-        "imatge": "https://exemple.com/stop_sign.jpg"
+        "imatge": "web/img/foto5.png"
       },
       {
         "id": 6,
@@ -130,7 +130,7 @@
             "correcta": false
           }
         ],
-        "imatge": "https://exemple.com/residential_zone.jpg"
+        "imatge": "web/img/foto6.jpg"
       },
       {
         "id": 7,
@@ -152,7 +152,7 @@
             "correcta": false
           }
         ],
-        "imatge": "https://exemple.com/roundabout.jpg"
+        "imatge": "/foto7.jpg"
       },
       {
         "id": 8,
@@ -174,7 +174,7 @@
             "correcta": true
           }
         ],
-        "imatge": "https://exemple.com/indicator.jpg"
+        "imatge": "web/img/foto8.jpg"
       },
       {
         "id": 9,
@@ -196,7 +196,7 @@
             "correcta": false
           }
         ],
-        "imatge": "https://exemple.com/abs.jpg"
+        "imatge": "web/img/foto9.jpg"
       },
       {
         "id": 10,
@@ -218,7 +218,7 @@
             "correcta": true
           }
         ],
-        "imatge": "https://exemple.com/low_beams.jpg"
+        "imatge": "web/img/foto10.png"
       },
       {
         "id": 11,
@@ -240,7 +240,7 @@
             "correcta": false
           }
         ],
-        "imatge": "https://exemple.com/school_zone.jpg"
+        "imatge": "web/img/foto11.jpg"
       },
       {
         "id": 12,
@@ -262,7 +262,7 @@
             "correcta": true
           }
         ],
-        "imatge": "https://exemple.com/no_parking.jpg"
+        "imatge": "web/img/foto12.jpg"
       },
       {
         "id": 13,
@@ -284,7 +284,7 @@
             "correcta": false
           }
         ],
-        "imatge": "https://exemple.com/give_way.jpg"
+        "imatge": "web/img/foto13.jpg"
       },
       {
         "id": 14,
@@ -306,7 +306,7 @@
           "correcta": false
         }
       ],
-      "imatge": "https://exemple.com/yellow_light.jpg"
+        "imatge": "web/img/foto14.jpg"
     },
     {
       "id": 15,
@@ -328,7 +328,7 @@
           "correcta": false
         }
       ],
-      "imatge": "https://exemple.com/change_lane.jpg"
+        "imatge": "web/img/foto15.jpg"
     },
     {
       "id": 16,
@@ -350,7 +350,7 @@
           "correcta": true
         }
       ],
-      "imatge": "https://exemple.com/road.jpg"
+        "imatge": "web/img/foto16.jpg"
     },
     {
       "id": 17,
@@ -372,7 +372,7 @@
           "correcta": false
         }
       ],
-      "imatge": "https://exemple.com/traction_control.jpg"
+        "imatge": "web/img/foto17.jpg"
     },
     {
       "id": 18,
@@ -394,7 +394,7 @@
           "correcta": false
         }
       ],
-      "imatge": "https://exemple.com/solid_line.jpg"
+        "imatge": "web/img/foto18.jpeg"
     },
     {
       "id": 19,
@@ -416,7 +416,7 @@
           "correcta": false
         }
       ],
-      "imatge": "https://exemple.com/horn.jpg"
+        "imatge": "web/img/foto19.jpg"
     },
     {
       "id": 20,
@@ -438,7 +438,7 @@
           "correcta": false
         }
       ],
-      "imatge": "https://exemple.com/documents.jpg"
+        "imatge": "web/img/foto20.jpg"
     }
   ]
 }

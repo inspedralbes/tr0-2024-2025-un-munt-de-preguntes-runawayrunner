@@ -17,41 +17,35 @@ fetch('http://localhost/TR0_UMDP/back/getPreguntes.php')
     
         if (preguntaActual < data.length) {
             pregunta = data[preguntaActual];
-            htmlString += `<img src="${pregunta.imatge}">`
             htmlString += `<h3>${pregunta.pregunta}</h3>`;
+            htmlString += `<img id="imagenResultado" src="${pregunta.imatge}" width="200px" height="200px" style="display: block; margin: 0 auto;"><br>`;
             let opcions = ['A','B','C'];
-    
+            
             htmlString += `<table><tr>`;
             for (let indexResposta = 0; indexResposta < opcions.length; indexResposta++) {
                 resposta = pregunta.respostes[indexResposta];
                 htmlString += `<td><button onclick="processarResposta(${preguntaActual}, ${indexResposta})">${opcions[indexResposta]}</button></td><td>${resposta.resposta}</td></tr>`;
             }
+            htmlString += `</table>`;
         }
         document.getElementById("partida").innerHTML = htmlString;
     }
+
     function processarResposta(preguntaActual, indexResposta) {
         console.log(`Pregunta actual: ${preguntaActual}, Respuesta seleccionada: ${indexResposta}`);
-        preguntaActual++;
-        let htmlStringResposta = '';
-
+        let pregunta = dadesPreguntes[preguntaActual];
+        
+        let imagenResultado = document.getElementById("imagenResultado");
         if (pregunta.respostes[indexResposta].correcta) {
-            htmlStringResposta += `<h4>Resposta correcte</h4>`;
+            imagenResultado.src = "img/correcte.png";
         } else {
-            htmlStringResposta += `<h4>Resposta incorrecte</h4>`;
+            imagenResultado.src = "img/incorrecte.png";
         }
-
-        const resultatRespostaElement = document.getElementById("resposta");
-        if (resultatRespostaElement) {
-            resultatRespostaElement.innerHTML = htmlStringResposta;
-        } else {
-            console.error("El elemento 'resposta' no se encontró en el DOM.");
-        }
-
-        document.getElementById("resultatResposta").innerHTML = htmlStringResposta;
-
+        
         setTimeout(() => {
+            preguntaActual++;
             mostrarPregunta(dadesPreguntes, preguntaActual);
-        }, 3000); 
+        }, 2000); 
     }
 
     

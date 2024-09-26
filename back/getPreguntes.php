@@ -6,7 +6,7 @@ $preguntes = $datos["preguntes"];
 
 shuffle($preguntes);
 
-if (!isset($_SESSION['preguntesSeleccionades'])) {
+if (isset($_SESSION['preguntesSeleccionades'])) {
     $preguntesSeleccionades = [];
 
     while (count($preguntesSeleccionades) < 10) {

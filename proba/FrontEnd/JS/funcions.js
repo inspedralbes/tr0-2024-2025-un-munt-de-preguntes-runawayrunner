@@ -34,13 +34,12 @@ function mostrarPregunta() {
 
 function contestar(indexResposta) {
   console.log(`Pregunta: ${preguntaActual + 1}, Opcion seleccionada: ${pregunta.respostes[indexResposta].resposta}`);
-  // Check if the answer is correct
   if (pregunta.respostes[indexResposta].correcta) {
     correcte++;
   } else {
     error++;
   }
 
-  preguntaActual++; // Move to the next question
-  mostrarPregunta(); // Show the next question
+  preguntaActual++;
+  mostrarPregunta();
 }

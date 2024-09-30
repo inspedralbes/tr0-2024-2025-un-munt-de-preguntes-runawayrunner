@@ -6,7 +6,7 @@ $preguntes = $datos["preguntes"];
 
 shuffle($preguntes);
 
-if (isset($_SESSION['preguntesSeleccionades'])) {
+if (!isset($_SESSION['preguntesSeleccionades'])) {
     $preguntesSeleccionades = [];
 
     while (count($preguntesSeleccionades) < 10) {
@@ -18,6 +18,12 @@ if (isset($_SESSION['preguntesSeleccionades'])) {
     $_SESSION['preguntesSeleccionades'] = $preguntesSeleccionades;
 } else {
     $preguntesSeleccionades = $_SESSION['preguntesSeleccionades'];
+}
+
+foreach ($preguntesSeleccionades as &$pregunta) {
+    foreach ($pregunta['respostes'] as &$resposta) {
+        unset($resposta['correcta']);
+    }
 }
 
 echo json_encode($preguntesSeleccionades);

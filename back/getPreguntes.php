@@ -4,6 +4,10 @@ $jsonFile = file_get_contents('preguntes.json');
 $datos = json_decode($jsonFile, true);
 $preguntes = $datos["preguntes"];
 
+// He guardat les preguntes originals a un altre array de session
+
+$_SESSION['preguntesOriginals'] = $preguntes;
+
 shuffle($preguntes);
 
 if (!isset($_SESSION['preguntesSeleccionades'])) {

@@ -1,6 +1,5 @@
 let preguntaActual = 0;
-let correctes = 0;
-let jsonPreguntes = [];
+let estatDeLaPartida = [];
 
 fetch('http://localhost/TR0_UMDP/back/getPreguntes.php')
     .then(response => response.json())
@@ -41,9 +40,9 @@ function processarResposta(preguntaActual, indexResposta, preguntaID) {
     console.log(`Pregunta actual: ${preguntaActual}, Respuesta seleccionada: ${indexResposta}`);
     let pregunta = dadesPreguntes[preguntaActual];
 
-    jsonPreguntes.push({
+    estatDeLaPartida.push({
         pregunta: preguntaID,
-        respuesta: indexResposta
+        resposta: indexResposta
     });
 
     setTimeout(() => {
@@ -58,34 +57,26 @@ function finalizarSesion() {
             headers: {
                 "Content-Type": "application/json; charset=utf-8"
             },
-            body: JSON.stringify(jsonPreguntes),
+            body: JSON.stringify(estatDeLaPartida),
         }
     )
         .then((response) => response.json())
         .then((data) => {
-            console.log("hola")
+            const correctasCount = data.filter(resultat => resultat.correcta).length;
             let htmlString = `<h3>Has completat todes les preguntes!</h3>`;
             htmlString += `<p>Gracies por participar.</p>`;
-            htmlString += `<p>${data}/10</p>`;
+            htmlString += `<p>${correctasCount}/10</p>`;
             
-        
+            console.log(estatDeLaPartida);
             htmlString += `<h4>Respuestas seleccionadas:</h4>`;
             htmlString += `<ul>`;
-            jsonPreguntes.forEach((respuesta, index) => {
-                htmlString += `<li>Pregunta ${index}: Respuesta ${respuesta.respuesta}</li>`;
+            data.forEach((resposta, index) => {
+                htmlString += `<li>Pregunta ${index+1}:  ${resposta.resposta}</li>`;
             });
             htmlString += `</ul>`;
         
-            htmlString += `<button onclick="reiniciarJuego()">Reiniciar</button>`;
+            htmlString += `<button onclick="obtenerNuevasPreguntas()">Reiniciar</button>`;
             document.getElementById("partida").innerHTML = htmlString;
         })
         .catch((error) => console.log("Error al enviar les respostes:", error));
-}
-
-function reiniciarJuego() {
-    console.clear();
-    preguntaActual = 0; 
-    correctes = 0;
-    jsonPreguntes = [];
-    mostrarPregunta(dadesPreguntes, preguntaActual);
 }

@@ -1,25 +1,34 @@
 <?php
+session_start();
 
-$correctas = 0;
+$dadesUsuari = file_get_contents('php://input');
+$respostesUsuari = json_decode($dadesUsuari, true);
+$preguntesSeleccionades = $_SESSION['preguntesSeleccionades'];
 
-$import = file_get_contents("php://input");
-$respostesUsuari = json_decode($import, true);
+$resultados = [];
 
-$preguntasSeleccionades = $_SESSION['preguntesSeleccionades'];
-sort($preguntasSeleccionades);
-
-$totalPreguntes = count($preguntasSeleccionades);
-
-for ($index = 0; $index < $totalPreguntes; $index++) { 
-    $pregunta = $preguntasSeleccionades[$index];
-    $resposta = $preguntasSeleccionades[$index];
-
-    $indexRespostaCorrecte = array_search(true, array_column($pregunta['respostes'], 'correcta'));
-
-    if ($resposta == $indexRespostaCorrecte) {
-        $correctas++;
+foreach ($respostesUsuari as $respostaUsuari) {
+    foreach ($preguntesSeleccionades as $pregunta) {
+        if ($pregunta['id'] == $respostaUsuari['pregunta']) {
+            $indexRespostaCorrecte = array_search(true, array_column($pregunta['respostes'], 'correcta'));
+            
+            if ($respostaUsuari['resposta'] == $indexRespostaCorrecte) {
+                $resultados[] = [
+                    'pregunta' => $pregunta['id'],
+                    'resposta' => '&#10003',
+                    'correcta' => true
+                ];
+            } else {
+                $resultados[] = [
+                    'pregunta' => $pregunta['id'],
+                    'resposta' => 'incorrecte',
+                    'correcta' => false
+                ];
+            }
+            break;
+        }
     }
 }
 
-echo json_encode($correctas);
+echo json_encode($resultados);
 ?>

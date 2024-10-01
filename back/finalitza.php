@@ -11,7 +11,7 @@ foreach ($respostesUsuari as $respostaUsuari) {
     foreach ($preguntesSeleccionades as $pregunta) {
         if ($pregunta['id'] == $respostaUsuari['pregunta']) {
             $indexRespostaCorrecte = array_search(true, array_column($pregunta['respostes'], 'correcta'));
-            
+
             if ($respostaUsuari['resposta'] == $indexRespostaCorrecte) {
                 $resultados[] = [
                     'pregunta' => $pregunta['id'],
@@ -29,6 +29,6 @@ foreach ($respostesUsuari as $respostaUsuari) {
         }
     }
 }
-
+session_destroy();
 echo json_encode($resultados);
 ?>

@@ -1,5 +1,7 @@
 let preguntaActual = 0;
 let estatDeLaPartida = [];
+let contador = 0;
+
 
 function getFormHTML() {
     return `
@@ -16,9 +18,9 @@ function getFormHTML() {
 
 function setupFormListener() {
     document.getElementById('formNom').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the form from submitting the traditional way
+        event.preventDefault(); 
         const nomUsuari = document.getElementById('nomUsuari').value;
-        iniciarPartida(nomUsuari); // Start the game with the username
+        iniciarPartida(nomUsuari);
     });
 }
 
@@ -29,14 +31,15 @@ setupFormListener();
 function iniciarPartida(nomUsuari) {
     console.log(`Nom del jugador: ${nomUsuari}`);
     fetch('http://localhost/TR0_UMDP/back/getPreguntes.php')
-        .then(response => response.json())
-        .then(info => {
-            dadesPreguntes = info;
-            mostrarPregunta(dadesPreguntes, preguntaActual);
-        })
-        .catch(error => {
-            console.error('Error al cargar las preguntas:', error);
-        });
+    .then(response => response.json())
+    .then(info => {
+        dadesPreguntes = info;
+        mostrarPregunta(dadesPreguntes, preguntaActual);
+        myTimer = setInterval(myCounter, 1000);
+    })
+    .catch(error => {
+        console.error('Error al cargar las preguntas:', error);
+    });
 }
 
 function mostrarPregunta(data, preguntaActual) {
@@ -52,11 +55,11 @@ function mostrarPregunta(data, preguntaActual) {
         htmlString += `<table><tr>`;
         for (let indexResposta = 0; indexResposta < opcions.length; indexResposta++) {
             resposta = pregunta.respostes[indexResposta];
-            // htmlString += `<td><button class="botonResposta" onclick="processarResposta(${preguntaActual}, ${indexResposta}, ${pregunta.id})">${opcions[indexResposta]}</button></td><td>${resposta.resposta}</td></tr>`;
             htmlString += `<td><button class="botonResposta" id="processarResposta(${preguntaActual}, ${indexResposta}, ${pregunta.id})">${opcions[indexResposta]}</button></td><td>${resposta.resposta}</td></tr>`;
         }
         htmlString += `</table>`;
     } else {
+        clearInterval(myTimer);
         finalizarSesion();
     }
     document.getElementById("partida").innerHTML = htmlString;
@@ -66,6 +69,10 @@ function mostrarPregunta(data, preguntaActual) {
         const preguntaID = pregunta.id;
         boton.addEventListener('click', () => processarResposta(preguntaActual, index, preguntaID));
     });
+}
+
+function myCounter(params) {
+    document.getElementById("timer").innerHTML = contador++;
 }
 
 function processarResposta(preguntaActual, indexResposta, preguntaID) {
@@ -82,10 +89,12 @@ function processarResposta(preguntaActual, indexResposta, preguntaID) {
     setTimeout(() => {
         preguntaActual++;
         mostrarPregunta(dadesPreguntes, preguntaActual);
-    }, 1000); 
+    }, 750); 
 }
 
 function finalizarSesion() {
+    document.getElementById('temps').style.visibility = 'hidden';
+
     fetch('http://localhost/TR0_UMDP/back/finalitza.php', {
             method: "POST",
             headers: {
@@ -97,8 +106,10 @@ function finalizarSesion() {
         .then((response) => response.json())
         .then((data) => {
             const correctasCount = data.filter(resultat => resultat.correcta).length;
-            let htmlString = `<h3>Has completat todes les preguntes!</h3>`;
+            let htmlString = ``;
+            htmlString += `<h3>Has completat todes les preguntes!</h3>`;
             htmlString += `<p>Gracies por participar.</p>`;
+            htmlString += `<p>Temps: ${contador}</p>`;
             htmlString += `<p>${correctasCount}/10</p>`;
             
             console.log(estatDeLaPartida);
@@ -122,8 +133,15 @@ function reiniciarJuego() {
     console.clear();
     preguntaActual = 0;
     estatDeLaPartida = [];
+    contador = 0;
 
-    // Mostrar el formulari
+    // Reiniciar el temporizador
+    document.getElementById('timer').innerHTML = '';
+
+    // Mostrar el div de temps
+    document.getElementById('temps').style.visibility = 'visible';
+
+    // Mostrar el nou formulari
     document.getElementById("partida").innerHTML = getFormHTML();
 
     // Gestiona les opcions del form

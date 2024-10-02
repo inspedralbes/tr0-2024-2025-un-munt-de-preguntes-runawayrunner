@@ -4,14 +4,13 @@ body {
 }
 
 #partida {
-    margin: 100px auto;
+    margin: 0 auto;
     width: 80%;
     max-width: 500px;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
 }
 
 #butoncomençar {
@@ -31,4 +30,17 @@ button:hover {
     background-color: lightblue;
     border: 2px solid;
     border-radius: 5px;
+}
+
+#temps {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 500px;
+}
+
+#temps h4 {
+    margin: 100px auto;
+    text-align: right;
+    margin-bottom: 0;
+    padding: 10px;
 }

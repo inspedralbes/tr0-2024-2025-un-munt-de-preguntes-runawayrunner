@@ -4,6 +4,9 @@ body {
 }
 
 #partida {
+    display: flex;
+    flex-direction: column;  /* Coloca los elementos en una columna */
+    align-items: center;     /* Alinea los elementos en el centro horizontalmente */
     margin: 0 auto;
     width: 80%;
     max-width: 500px;
@@ -11,6 +14,34 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#partida h1, #partida h5 {
+    margin: 0; /* Removes all margins */
+}
+
+#partida h5 {
+    margin-bottom: 30px; /* Adds a small margin above the h6 if you want a little space */
+}
+
+form {
+    width: 75%;  /* Asegura que el formulario ocupe el ancho del contenedor */
+}
+
+form label, form input, form button {
+    width: 100%; /* Alinea los inputs y botones con el ancho del formulario */
+    margin-bottom: 10px;
+}
+
+form input {
+    margin: 10px 0px;
+    padding: 10px;
+    box-sizing: border-box; /* Asegura que el padding no rompa el ancho del input */
+}
+
+form button {
+    padding: 10px;
+    cursor: pointer;
 }
 
 #butoncomençar {
@@ -36,6 +67,7 @@ button:hover {
     margin: 0 auto;
     width: 80%;
     max-width: 500px;
+    visibility: hidden;
 }
 
 #temps h4 {
@@ -43,4 +75,14 @@ button:hover {
     text-align: right;
     margin-bottom: 0;
     padding: 10px;
+}
+
+.tablaRespuestas {
+    width: 100%; /* Ajusta el ancho de la tabla */
+    max-width: 600px; /* Ancho máximo de la tabla */
+    border-collapse: collapse; /* Elimina el espacio entre las celdas */
+}
+
+.tablaRespuestas td.pequena {
+    width: 10%;
 }

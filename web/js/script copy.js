@@ -1,7 +1,8 @@
 let preguntaActual = 0;
 let estatDeLaPartida = [];
 let contador = 0;
-let nPreguntes;
+let dadesPreguntes = [];
+
 
 function getFormHTML() {
     return `
@@ -24,8 +25,7 @@ function setupFormListener() {
     document.getElementById('formNom').addEventListener('submit', function(event) {
         event.preventDefault(); 
         const nomUsuari = document.getElementById('nomUsuari').value;
-        nPreguntes = document.getElementById('nPreguntes').value;
-        iniciarPartida(nomUsuari, nPreguntes);
+        iniciarPartida(nomUsuari);
     });
 }
 
@@ -33,10 +33,10 @@ document.getElementById("partida").innerHTML = getFormHTML();
 
 setupFormListener();
 
-function iniciarPartida(nomUsuari, nPreguntes) {
+function iniciarPartida(nomUsuari) {
     document.getElementById('temps').style.visibility = 'visible';
     console.log(`Nom del jugador: ${nomUsuari}`);
-    fetch(`http://localhost/TR0_UMDP/back/getPreguntes.php?nPreguntes=${nPreguntes}`)
+    fetch('http://localhost/TR0_UMDP/back/getPreguntes.php')
     .then(response => response.json())
     .then(info => {
         dadesPreguntes = info;
@@ -100,46 +100,39 @@ function processarResposta(preguntaActual, indexResposta, preguntaID) {
 }
 
 function finalizarSesion() {
+
     fetch('http://localhost/TR0_UMDP/back/finalitza.php', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json; charset=utf-8"
-        },
-        body: JSON.stringify(estatDeLaPartida),
-    })
-    .then((response) => response.json())
-    .then((data) => {
-        const correctasCount = data.filter(resultat => resultat.correcta).length;
-        let htmlString = ``;
-        htmlString += `<h3>Has completat todes les preguntes!</h3>`;
-        htmlString += `<p>Gracies por participar.</p>`;
-        htmlString += `<p>Temps: ${contador} segons</p>`;
-        htmlString += `<p>${correctasCount}/${nPreguntes}</p>`;
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
+            },
+            body: JSON.stringify(estatDeLaPartida),
+        }
+    )
+        .then((response) => response.json())
+        .then((data) => {
+            const correctasCount = data.filter(resultat => resultat.correcta).length;
+            let htmlString = ``;
+            htmlString += `<h3>Has completat todes les preguntes!</h3>`;
+            htmlString += `<p>Gracies por participar.</p>`;
+            htmlString += `<p>Temps: ${contador} segons</p>`;
+            htmlString += `<p>${correctasCount}/10</p>`;
+            
+            console.log(estatDeLaPartida);
+            htmlString += `<h4>Resum:</h4>`;
+            htmlString += `<ul>`;
+            data.forEach((resposta, index) => {
+                htmlString += `<li>Pregunta ${index+1}:  ${resposta.resposta}</li>`;
+            });
+            htmlString += `</ul>`;
         
-        console.log(estatDeLaPartida);
+            htmlString += `<button id="reiniciarJuego">Reiniciar</button>`;
+            document.getElementById("partida").innerHTML = htmlString;
 
-        // Formato mejorado para el resumen
-        htmlString += `<h4>Resum:</h4>`;
-        htmlString += `<table class="resumTable" style="width: 100%; border-collapse: collapse;">`;
-        htmlString += `<thead><tr style="background-color: #f2f2f2;"><th>Pregunta</th><th>Resposta</th><th>Resultat</th></tr></thead>`;
-        htmlString += `<tbody>`;
-        data.forEach((resposta, index) => {
-            const resultat = resposta.correcta ? "Correcta" : "Incorrecta"; // Verificar si la respuesta es correcta
-            htmlString += `<tr>
-                <td style="border: 1px solid #ddd; padding: 8px;">${index + 1}</td>
-                <td style="border: 1px solid #ddd; padding: 8px;">${resposta.resposta}</td>
-                <td style="border: 1px solid #ddd; padding: 8px; text-align: center; color: ${resposta.correcta ? 'green' : 'red'};">${resultat}</td>
-            </tr>`;
-        });
-        htmlString += `</tbody></table><br>`;
-
-        htmlString += `<button id="reiniciarJuego">Reiniciar</button>`;
-        document.getElementById("partida").innerHTML = htmlString;
-
-        const reiniciarButton = document.getElementById("reiniciarJuego");
-        reiniciarButton.addEventListener("click", reiniciarJuego);
-    })
-    .catch((error) => console.log("Error al enviar les respostes:", error));
+            const reiniciarButton = document.getElementById("reiniciarJuego");
+            reiniciarButton.addEventListener("click", reiniciarJuego);
+        })
+        .catch((error) => console.log("Error al enviar les respostes:", error));
 }
 
 function reiniciarJuego() {

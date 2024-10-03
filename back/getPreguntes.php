@@ -1,34 +1,79 @@
 <?php
 session_start();
-$jsonFile = file_get_contents('preguntes.json');
-$datos = json_decode($jsonFile, true);
-$preguntes = $datos["preguntes"];
+include("connexio.php");
 
-// He guardat les preguntes originals a un altre array de session
+$nPreguntes = $_GET['nPreguntes'];
+
+$sql = "SELECT * FROM preguntes ORDER BY RAND() LIMIT $nPreguntes";
+$result = $conn->query($sql);
+
+$preguntesSeleccionades = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $pregunta_id = $row['id'];
+        $pregunta_texto = $row['pregunta'];
+        $imatge = $row['imatge'];
+
+        $sql_respostes = "SELECT id, resposta FROM respostes WHERE pregunta_id = $pregunta_id";
+        $result_respostes = $conn->query($sql_respostes);
+
+        $respostes = [];
+        if ($result_respostes->num_rows > 0) {
+            while ($resposta_row = $result_respostes->fetch_assoc()) {
+                $respostes[] = [
+                    'id' => $resposta_row['id'],
+                    'resposta' => $resposta_row['resposta']
+                ];
+            }
+        }
+
+        $preguntesSeleccionades[] = [
+            'id' => $pregunta_id,
+            'pregunta' => $pregunta_texto,
+            'imatge' => $imatge,
+            'respostes' => $respostes
+        ];
+    }
+}
+
+$sqlPreguntesOriginals = "SELECT * FROM preguntes";
+$resultPreguntes = $conn->query($sqlPreguntesOriginals);
+
+// Guardar todes les preguntes originals
+$preguntes = [];
+
+if ($resultPreguntes->num_rows > 0) {
+    while ($row = $resultPreguntes->fetch_assoc()) {
+        $pregunta_id = $row['id'];
+        $pregunta_texto = $row['pregunta'];
+        $imatge = $row['imatge'];
+
+        $sql_respostes = "SELECT id, resposta, correcta FROM respostes WHERE pregunta_id = $pregunta_id";
+        $resultPreguntes_respostes = $conn->query($sql_respostes);
+
+        $respostes = [];
+        if ($resultPreguntes_respostes->num_rows > 0) {
+            while ($resposta_row = $resultPreguntes_respostes->fetch_assoc()) {
+                $respostes[] = [
+                    'id' => $resposta_row['id'],
+                    'resposta' => $resposta_row['resposta'],
+                    'correcta' => $resposta_row['correcta'],
+                ];
+            }
+        }
+
+        $preguntes [] = [
+            'id' => $pregunta_id,
+            'pregunta' => $pregunta_texto,
+            'imatge' => $imatge,
+            'respostes' => $respostes
+        ];
+    }
+}
 
 $_SESSION['preguntesOriginals'] = $preguntes;
 
-shuffle($preguntes);
-
-if (!isset($_SESSION['preguntesSeleccionades'])) {
-    $preguntesSeleccionades = [];
-
-    while (count($preguntesSeleccionades) < 10) {
-        $posAleatoria = rand(0, count($preguntes) - 1);
-        if (!in_array($preguntes[$posAleatoria], $preguntesSeleccionades)) {
-            $preguntesSeleccionades[] = $preguntes[$posAleatoria];
-        }
-    }
-    $_SESSION['preguntesSeleccionades'] = $preguntesSeleccionades;
-} else {
-    $preguntesSeleccionades = $_SESSION['preguntesSeleccionades'];
-}
-
-foreach ($preguntesSeleccionades as &$pregunta) {
-    foreach ($pregunta['respostes'] as &$resposta) {
-        unset($resposta['correcta']);
-    }
-}
-
+header('Content-Type: application/json');
 echo json_encode($preguntesSeleccionades);
 ?>

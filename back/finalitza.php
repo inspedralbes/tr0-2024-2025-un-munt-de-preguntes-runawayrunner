@@ -3,25 +3,25 @@ session_start();
 
 $dadesUsuari = file_get_contents('php://input');
 $respostesUsuari = json_decode($dadesUsuari, true);
-$preguntesSeleccionades = $_SESSION['preguntesSeleccionades'];
+$preguntesOriginals = $_SESSION['preguntesOriginals'];
 
 $resultados = [];
 
 foreach ($respostesUsuari as $respostaUsuari) {
-    foreach ($preguntesSeleccionades as $pregunta) {
+    foreach ($preguntesOriginals as $pregunta) {
         if ($pregunta['id'] == $respostaUsuari['pregunta']) {
             $indexRespostaCorrecte = array_search(true, array_column($pregunta['respostes'], 'correcta'));
-
+            $respostaUsuariText = $pregunta['respostes'][$respostaUsuari['resposta']]['resposta'];
             if ($respostaUsuari['resposta'] == $indexRespostaCorrecte) {
                 $resultados[] = [
                     'pregunta' => $pregunta['id'],
-                    'resposta' => '&#10003',
+                    'resposta' => $respostaUsuariText,
                     'correcta' => true
                 ];
             } else {
                 $resultados[] = [
                     'pregunta' => $pregunta['id'],
-                    'resposta' => 'incorrecte',
+                    'resposta' => $respostaUsuariText,
                     'correcta' => false
                 ];
             }

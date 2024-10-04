@@ -16,7 +16,8 @@ function getFormHTML() {
             <br><br>
             <button type="submit">COMENÇAR</button>
             <button type="reset">ESBORRAR</button>
-        </form>
+            </form>
+            <button onclick="window.location.href='admin.html'">ADMINISTRAR DADES</button><br>
     `;
 }
 
@@ -121,12 +122,16 @@ function finalizarSesion() {
         // Formato mejorado para el resumen
         htmlString += `<h4>Resum:</h4>`;
         htmlString += `<table class="resumTable" style="width: 100%; border-collapse: collapse;">`;
-        htmlString += `<thead><tr style="background-color: #f2f2f2;"><th>Pregunta</th><th>Resposta</th><th>Resultat</th></tr></thead>`;
+        htmlString += `<thead><tr style="background-color: #4CAF50; color: white; text-align: center;">
+                    <th style="border: 1px solid #ddd; padding: 8px;">Pregunta</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Resposta</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Resultat</th>
+                    </tr></thead>`;
         htmlString += `<tbody>`;
         data.forEach((resposta, index) => {
             const resultat = resposta.correcta ? "Correcta" : "Incorrecta"; // Verificar si la respuesta es correcta
             htmlString += `<tr>
-                <td style="border: 1px solid #ddd; padding: 8px;">${index + 1}</td>
+                <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">${index + 1}</td>
                 <td style="border: 1px solid #ddd; padding: 8px;">${resposta.resposta}</td>
                 <td style="border: 1px solid #ddd; padding: 8px; text-align: center; color: ${resposta.correcta ? 'green' : 'red'};">${resultat}</td>
             </tr>`;

@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family:Georgia, 'Times New Roman', Times, serif;
     background-color: rgb(212, 212, 212);
 }
 
@@ -85,4 +85,89 @@ button:hover {
 
 .tablaRespuestas td.pequena {
     width: 10%;
+}
+
+#container {
+    display: grid;
+    place-items: center; /* Centra tanto vertical como horizontalmente */
+    height: 100vh; /* Altura completa de la pantalla */
+}
+
+#admin {
+    width: 90%;
+    max-width: 1000px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#admin h1 {
+    margin-bottom: 0;
+    letter-spacing: 5px;
+}
+
+#admin h4 {
+    margin-top: 0;
+    letter-spacing: 8px;
+}
+
+#admin h3 {
+    letter-spacing: 3px;
+}
+
+#admin button {
+    width: 200px;
+    letter-spacing: 2px;
+    margin-top: 0;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px;
+}
+
+#buttonContainer button {
+    width: 150px;
+    letter-spacing: 5px;
+}
+
+#admin form {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 800px;
+}
+
+/* Estilo para los campos del formulario */
+#admin form input[type="text"],
+#admin form input[type="number"],
+#admin form input[type="file"],
+#admin form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilo para el botón */
+#admin form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#admin form button:hover {
+    background-color: #218838;
 }

@@ -34,7 +34,7 @@ createButton.addEventListener('click', function() {
 });
 
 readButton.addEventListener('click', function() {
-    fetch('../back/mostrarPreguntes.php')
+    fetch('../../back/mostrarPreguntes.php')
         .then(response => response.json())
         .then(data => {
             readPreguntes(data);
@@ -166,7 +166,7 @@ deleteButton.addEventListener('click', function() {
         
         const idPregunta = document.getElementById('idPregunta').value;
 
-        fetch('../back/mostrarPreguntes.php')
+        fetch('../../back/mostrarPreguntes.php')
         .then(response => response.json())
         .then(data => {
             const id = parseInt(idPregunta, 10); 

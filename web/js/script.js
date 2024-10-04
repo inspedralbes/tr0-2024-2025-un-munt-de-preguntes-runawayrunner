@@ -36,7 +36,7 @@ setupFormListener();
 function iniciarPartida(nomUsuari, nPreguntes) {
     document.getElementById('temps').style.visibility = 'visible';
     console.log(`Nom del jugador: ${nomUsuari}`);
-    fetch(`../../back/getPreguntes.php?nPreguntes=${nPreguntes}`)
+    fetch(`https://a21aivantjeh.daw.inspedralbes.cat/tr0-2024-2025-un-munt-de-preguntes-runawayrunner/back/getPreguntes.php?nPreguntes=${nPreguntes}`)
     .then(response => response.json())
     .then(info => {
         dadesPreguntes = info;
@@ -100,7 +100,7 @@ function processarResposta(preguntaActual, indexResposta, preguntaID) {
 }
 
 function finalizarSesion() {
-    fetch('../../back/finalitza.php', {
+    fetch('https://a21aivantjeh.daw.inspedralbes.cat/tr0-2024-2025-un-munt-de-preguntes-runawayrunner/back/finalitza.php', {
         method: "POST",
         headers: {
             "Content-Type": "application/json; charset=utf-8"

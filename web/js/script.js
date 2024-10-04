@@ -17,7 +17,6 @@ function getFormHTML() {
             <button type="submit">COMENÇAR</button>
             <button type="reset">ESBORRAR</button>
             </form>
-            <button onclick="window.location.href='admin.html'">ADMINISTRAR DADES</button><br>
     `;
 }
 

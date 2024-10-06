@@ -46,21 +46,17 @@
         $pregunta_text = $pregunta['pregunta'];
         $imatge = $pregunta['imatge'];
 
-        // Insertar en la tabla preguntes
         $stmt = $conn->prepare("INSERT INTO preguntes (pregunta, imatge) VALUES (?, ?)");
         $stmt->bind_param("ss", $pregunta_text, $imatge);
 
         if ($stmt->execute()) {
-            // Obtener el ID de la pregunta recién insertada
             $pregunta_id = $stmt->insert_id;
             echo "Pregunta insertada con ID: " . $pregunta_id . "<br>";
 
-            // Insertar las respuestas correspondientes a la pregunta
             foreach ($pregunta['respostes'] as $resposta) {
                 $resposta_text = $resposta['resposta'];
                 $correcta = $resposta['correcta'];
 
-                // Insertar en la tabla respostes
                 $stmt_resposta = $conn->prepare("INSERT INTO respostes (pregunta_id, resposta, correcta) VALUES (?, ?, ?)");
                 $stmt_resposta->bind_param("isi", $pregunta_id, $resposta_text, $correcta);
 

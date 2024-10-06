@@ -100,7 +100,7 @@ function processarResposta(preguntaActual, indexResposta, preguntaID) {
 }
 
 function finalizarSesion() {
-    fetch('../../back/finalitza.php', {
+    fetch('./../back/finalitza.php', {
         method: "POST",
         headers: {
             "Content-Type": "application/json; charset=utf-8"

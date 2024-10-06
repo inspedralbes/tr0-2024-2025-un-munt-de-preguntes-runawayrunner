@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($conn->query($sql_pregunta) === TRUE) {
             ?>
             <h1>Pregunta esborrada correctament!</h1>
-            <button onclick="window.location.href='/TR0_UMDP/web/admin.html'">PÀGINA D'ADMIN</button>
+            <button onclick="window.location.href='../web/admin.html'">PÀGINA D'ADMIN</button>
             <?php
         } else {
             echo "Error al esborrar la pregunta: " . $conn->error;

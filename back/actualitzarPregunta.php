@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             ?>
             <h1>Pregunta i respostes actualitzades correctament!</h1>
-            <button onclick="window.location.href='/TR0_UMDP/web/admin.html'">PÀGINA D'ADMIN</button>
+            <button onclick="window.location.href='../web/admin.html'">PÀGINA D'ADMIN</button>
             <?php
         } else {
             echo "Error: " . $sql_pregunta . "<br>" . $conn->error;

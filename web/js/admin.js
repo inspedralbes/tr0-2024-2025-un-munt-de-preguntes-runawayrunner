@@ -6,7 +6,7 @@ const deleteButton = document.getElementById('deleteButton');
 createButton.addEventListener('click', function() {
     let htmlString = ``;
     htmlString +=  `<h1>AFEGIR UNA PREGUNTA</h1>
-                    <form action="/TR0_UMDP/back/agregarPregunta.php" method="POST" enctype="multipart/form-data">
+                    <form action="../back/agregarPregunta.php" method="POST" enctype="multipart/form-data">
                         <label for="pregunta">PREGUNTA</label>
                         <input type="text" id="pregunta" name="pregunta" required placeholder = "---"><br><br>
                         
@@ -34,7 +34,7 @@ createButton.addEventListener('click', function() {
 });
 
 readButton.addEventListener('click', function() {
-    fetch('./../back/mostrarPreguntes.php')
+    fetch('../back/mostrarPreguntes.php')
         .then(response => response.json())
         .then(data => {
             readPreguntes(data);
@@ -99,7 +99,7 @@ updateButton.addEventListener('click', function() {
         
         const idPregunta = document.getElementById('idPregunta').value;
 
-        fetch('./../back/mostrarPreguntes.php')
+        fetch('../back/mostrarPreguntes.php')
         .then(response => response.json())
         .then(data => {
             const id = parseInt(idPregunta, 10); 
@@ -121,7 +121,7 @@ function updatePregunta(pregunta) {
     let indexResposta = pregunta.respostes.findIndex(resposta => resposta.correcta === "1") + 1; // Busca l'index de la resposta correcta
     let htmlString = '';
     htmlString += `<h1>ACTUALITZAR PREGUNTA AMB ID '${pregunta.id}'</h1>
-    <form action="/TR0_UMDP/back/actualitzarPregunta.php?idPregunta=${pregunta.id}" method="POST" enctype="multipart/form-data">
+    <form action="../back/actualitzarPregunta.php?idPregunta=${pregunta.id}" method="POST" enctype="multipart/form-data">
         <label for="pregunta">PREGUNTA</label>
         <input type="text" id="pregunta" name="pregunta" required placeholder="${pregunta.pregunta}"><br><br>
         
@@ -166,7 +166,7 @@ deleteButton.addEventListener('click', function() {
         
         const idPregunta = document.getElementById('idPregunta').value;
 
-        fetch('./../back/mostrarPreguntes.php')
+        fetch('../back/mostrarPreguntes.php')
         .then(response => response.json())
         .then(data => {
             const id = parseInt(idPregunta, 10); 
@@ -188,7 +188,7 @@ function  deletePregunta(pregunta) {
     let respostaCorrecta = pregunta.respostes.find(resposta => resposta.correcta === "1")?.resposta
     let htmlString = '';
     htmlString += `<h1>BORRAR PREGUNTA AMB ID '${pregunta.id}'</h1>
-    <form action="/TR0_UMDP/back/borrarPregunta.php?idPregunta=${pregunta.id}" method="POST" enctype="multipart/form-data">
+    <form action="../back/borrarPregunta.php?idPregunta=${pregunta.id}" method="POST" enctype="multipart/form-data">
     <h3>PREGUNTA</h3>
     <p>${pregunta.pregunta}</p>
     <h3>IMATGE</h3>

@@ -25,6 +25,10 @@ function setupFormListener() {
         event.preventDefault(); 
         const nomUsuari = document.getElementById('nomUsuari').value;
         nPreguntes = document.getElementById('nPreguntes').value;
+        if (nPreguntes > dadesPreguntes.length) {
+            alert(`Error: Només hi ha ${dadesPreguntes.length} preguntes disponibles. Introdueix un número més petit.`);
+            return; 
+        }
         iniciarPartida(nomUsuari, nPreguntes);
     });
 }
@@ -40,12 +44,6 @@ function iniciarPartida(nomUsuari, nPreguntes) {
     .then(response => response.json())
     .then(info => {
         dadesPreguntes = info;
-
-        if (nPreguntes > dadesPreguntes.length) {
-            alert(`Error: Només hi ha ${dadesPreguntes.length} preguntes disponibles. Introdueix un número més petit.`);
-            return; 
-        }
-
         mostrarPregunta(dadesPreguntes, preguntaActual);
         myTimer = setInterval(myCounter, 1000);
     })

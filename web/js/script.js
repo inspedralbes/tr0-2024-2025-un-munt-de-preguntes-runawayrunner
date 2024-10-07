@@ -34,7 +34,6 @@ document.getElementById("partida").innerHTML = getFormHTML();
 setupFormListener();
 
 function iniciarPartida(nomUsuari, nPreguntes) {
-    document.getElementById('temps').style.visibility = 'visible';
     console.log(`Nom del jugador: ${nomUsuari}`);
     fetch(`../back/getPreguntes.php?nPreguntes=${nPreguntes}`)
     .then(response => response.json())
@@ -44,6 +43,7 @@ function iniciarPartida(nomUsuari, nPreguntes) {
             alert(`Error: Només hi ha ${dadesPreguntes.length} preguntes disponibles. Introdueix un número més petit.`);
             return; 
         }
+        document.getElementById('temps').style.visibility = 'visible';
         mostrarPregunta(dadesPreguntes, preguntaActual);
         myTimer = setInterval(myCounter, 1000);
     })

@@ -40,6 +40,12 @@ function iniciarPartida(nomUsuari, nPreguntes) {
     .then(response => response.json())
     .then(info => {
         dadesPreguntes = info;
+
+        if (nPreguntes > dadesPreguntes.length) {
+            alert(`Error: Només hi ha ${dadesPreguntes.length} preguntes disponibles. Introdueix un número més petit.`);
+            return; 
+        }
+
         mostrarPregunta(dadesPreguntes, preguntaActual);
         myTimer = setInterval(myCounter, 1000);
     })

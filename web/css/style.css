@@ -1,0 +1,173 @@
+body {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    background-color: rgb(212, 212, 212);
+}
+
+#partida {
+    display: flex;
+    flex-direction: column;  /* Coloca los elementos en una columna */
+    align-items: center;     /* Alinea los elementos en el centro horizontalmente */
+    margin: 0 auto;
+    width: 80%;
+    max-width: 500px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#partida h1, #partida h5 {
+    margin: 0; /* Removes all margins */
+}
+
+#partida h5 {
+    margin-bottom: 30px; /* Adds a small margin above the h6 if you want a little space */
+}
+
+form {
+    width: 75%;  /* Asegura que el formulario ocupe el ancho del contenedor */
+}
+
+form label, form input, form button {
+    width: 100%; /* Alinea los inputs y botones con el ancho del formulario */
+    margin-bottom: 10px;
+}
+
+form input {
+    margin: 10px 0px;
+    padding: 10px;
+    box-sizing: border-box; /* Asegura que el padding no rompa el ancho del input */
+}
+
+form button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#butoncomençar {
+    display: flex;                 
+    justify-content: center;       
+    align-items: center;          
+    height: 20vh;               
+    background-color: #f0f0f0;   
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px 5px;
+}
+
+button:hover {
+    background-color: lightblue;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+#temps {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 500px;
+    visibility: hidden;
+}
+
+#temps h4 {
+    margin: 100px auto;
+    text-align: right;
+    margin-bottom: 0;
+    padding: 10px;
+}
+
+.tablaRespuestas {
+    width: 100%; /* Ajusta el ancho de la tabla */
+    max-width: 600px; /* Ancho máximo de la tabla */
+    border-collapse: collapse; /* Elimina el espacio entre las celdas */
+}
+
+.tablaRespuestas td.pequena {
+    width: 10%;
+}
+
+#container {
+    display: grid;
+    place-items: center; /* Centra tanto vertical como horizontalmente */
+    height: 100vh; /* Altura completa de la pantalla */
+}
+
+#admin {
+    width: 90%;
+    max-width: 1000px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#admin h1 {
+    margin-bottom: 0;
+    letter-spacing: 5px;
+}
+
+#admin h4 {
+    margin-top: 0;
+    letter-spacing: 8px;
+}
+
+#admin h3 {
+    letter-spacing: 3px;
+}
+
+#admin button {
+    width: 200px;
+    letter-spacing: 2px;
+    margin-top: 0;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px;
+}
+
+#buttonContainer button {
+    width: 150px;
+    letter-spacing: 5px;
+}
+
+#admin form {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 800px;
+}
+
+/* Estilo para los campos del formulario */
+#admin form input[type="text"],
+#admin form input[type="number"],
+#admin form input[type="file"],
+#admin form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilo para el botón */
+#admin form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#admin form button:hover {
+    background-color: #218838;
+}

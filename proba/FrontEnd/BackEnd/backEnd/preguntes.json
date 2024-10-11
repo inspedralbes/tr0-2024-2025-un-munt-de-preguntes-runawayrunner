@@ -1,0 +1,444 @@
+{
+    "preguntes": [
+      {
+        "id": 1,
+        "pregunta": "Quina marca de cotxes utilitza el lema 'Ultimate Driving Machine'?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "BMW",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "Mercedes-Benz",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "Audi",
+            "correcta": false
+          }
+        ],
+        "imatge": "https://exemple.com/bmw.jpg"
+      },
+      {
+        "id": 2,
+        "pregunta": "Quina és la distància mínima que has de mantenir entre el teu cotxe i el cotxe davant en condicions normals?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "1 metre",
+            "correcta": false
+          },
+          {
+            "id": 2,
+            "resposta": "2 metres",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "3 metres",
+            "correcta": true
+          }
+        ],
+        "imatge": "https://exemple.com/distance.jpg"
+      },
+      {
+        "id": 3,
+        "pregunta": "Quin senyal indica la prohibició de passar?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "Un cercle vermell amb una línia blanca horitzontal",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "Un triangle amb un fons groc i una línia negra",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "Un quadrat blau amb una icona de cotxe",
+            "correcta": false
+          }
+        ],
+        "imatge": "https://exemple.com/no_entry.jpg"
+      },
+      {
+        "id": 4,
+        "pregunta": "Com es diu el dispositiu que controla la velocitat del vehicle de forma automàtica?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "ABS",
+            "correcta": false
+          },
+          {
+            "id": 2,
+            "resposta": "Cruise Control",
+            "correcta": true
+          },
+          {
+            "id": 3,
+            "resposta": "ESP",
+            "correcta": false
+          }
+        ],
+        "imatge": "https://exemple.com/cruise_control.jpg"
+      },
+      {
+        "id": 5,
+        "pregunta": "Quin senyal de trànsit indica que cal parar?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "Semàfor en vermell",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "Senyal de cedir el pas",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "Senyal de limitació de velocitat",
+            "correcta": false
+          }
+        ],
+        "imatge": "https://exemple.com/stop_sign.jpg"
+      },
+      {
+        "id": 6,
+        "pregunta": "Quina és la velocitat màxima permesa en una zona residencial?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "30 km/h",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "50 km/h",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "70 km/h",
+            "correcta": false
+          }
+        ],
+        "imatge": "https://exemple.com/residential_zone.jpg"
+      },
+      {
+        "id": 7,
+        "pregunta": "Què has de fer si et trobes amb una rotonda?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "Entra a la rotonda sense mirar",
+            "correcta": false
+          },
+          {
+            "id": 2,
+            "resposta": "Cedir el pas als vehicles dins la rotonda",
+            "correcta": true
+          },
+          {
+            "id": 3,
+            "resposta": "Encendre les llums d'emergència",
+            "correcta": false
+          }
+        ],
+        "imatge": "https://exemple.com/roundabout.jpg"
+      },
+      {
+        "id": 8,
+        "pregunta": "Com s'ha d'utilitzar l'indicador de gir?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "Només quan hi ha altres vehicles a prop",
+            "correcta": false
+          },
+          {
+            "id": 2,
+            "resposta": "Només quan el semàfor és vermell",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "Abans de canviar de carril o girar",
+            "correcta": true
+          }
+        ],
+        "imatge": "https://exemple.com/indicator.jpg"
+      },
+      {
+        "id": 9,
+        "pregunta": "Quina és la funció del sistema ABS?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "Evitar el bloqueig de les rodes en frenades fortes",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "Controlar la velocitat del vehicle",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "Augmentar la potència del motor",
+            "correcta": false
+          }
+        ],
+        "imatge": "https://exemple.com/abs.jpg"
+      },
+      {
+        "id": 10,
+        "pregunta": "Quan és obligatori encendre les llums de cruce?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "Sempre, independentment de les condicions",
+            "correcta": false
+          },
+          {
+            "id": 2,
+            "resposta": "Només quan plou",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "En condicions de poca visibilitat o de nit",
+            "correcta": true
+          }
+        ],
+        "imatge": "https://exemple.com/low_beams.jpg"
+      },
+      {
+        "id": 11,
+        "pregunta": "Quin senyal indica que hi ha una escola a prop?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "Un senyal quadrat amb un llibre",
+            "correcta": false
+          },
+          {
+            "id": 2,
+            "resposta": "Un senyal triangular amb una icona de nens",
+            "correcta": true
+          },
+          {
+            "id": 3,
+            "resposta": "Un cercle verd amb una icona de professor",
+            "correcta": false
+          }
+        ],
+        "imatge": "https://exemple.com/school_zone.jpg"
+      },
+      {
+        "id": 12,
+        "pregunta": "Què has de fer si et trobes amb una senyal de prohibició d'estacionar?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "Estacionar només durant la nit",
+            "correcta": false
+          },
+          {
+            "id": 2,
+            "resposta": "Estacionar només si no hi ha altres opcions",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "No estacionar en cap moment",
+            "correcta": true
+          }
+        ],
+        "imatge": "https://exemple.com/no_parking.jpg"
+      },
+      {
+        "id": 13,
+        "pregunta": "Quin tipus de senyal és el senyal de 'Cedir el pas'?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "Cercle",
+            "correcta": false
+          },
+          {
+            "id": 2,
+            "resposta": "Triangular",
+            "correcta": true
+          },
+          {
+            "id": 3,
+            "resposta": "Quadrat",
+            "correcta": false
+          }
+        ],
+        "imatge": "https://exemple.com/give_way.jpg"
+      },
+      {
+        "id": 14,
+      "pregunta": "Quina acció s'ha de prendre si un semàfor de trànsit es posa en groc?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Preparar-se per aturar-se",
+          "correcta": true
+        },
+        {
+          "id": 2,
+          "resposta": "Accelerar per passar abans que es posi en vermell",
+          "correcta": false
+        },
+        {
+          "id": 3,
+          "resposta": "Continuar sense canviar la velocitat",
+          "correcta": false
+        }
+      ],
+      "imatge": "https://exemple.com/yellow_light.jpg"
+    },
+    {
+      "id": 15,
+      "pregunta": "Quina és la manera correcta de canviar de carril?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Indicar amb els intermitents i comprovar els miralls",
+          "correcta": true
+        },
+        {
+          "id": 2,
+          "resposta": "Girar el volant de cop sense avisar",
+          "correcta": false
+        },
+        {
+          "id": 3,
+          "resposta": "Canviar de carril sense usar els intermitents si no hi ha altres vehicles",
+          "correcta": false
+        }
+      ],
+      "imatge": "https://exemple.com/change_lane.jpg"
+    },
+    {
+      "id": 16,
+      "pregunta": "Quina és la norma general per a la circulació en una carretera de doble sentit?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Canviar de carril constantment sense considerar la seguretat",
+          "correcta": false
+        },
+        {
+          "id": 2,
+          "resposta": "Circulant al centre de la carretera sense importar la direcció",
+          "correcta": false
+        },
+        {
+          "id": 3,
+          "resposta": "Mantenir-se en el teu carril i cedir el pas als vehicles que venen de front si cal",
+          "correcta": true
+        }
+      ],
+      "imatge": "https://exemple.com/road.jpg"
+    },
+    {
+      "id": 17,
+      "pregunta": "Quina funció té el sistema de control de tracció (TCS)?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Augmentar la velocitat del vehicle",
+          "correcta": false
+        },
+        {
+          "id": 2,
+          "resposta": "Millorar l'adhesió dels pneumàtics al paviment en condicions resbaladisses",
+          "correcta": true
+        },
+        {
+          "id": 3,
+          "resposta": "Controlar la direcció del vehicle",
+          "correcta": false
+        }
+      ],
+      "imatge": "https://exemple.com/traction_control.jpg"
+    },
+    {
+      "id": 18,
+      "pregunta": "Què indica una línia contínua en la carretera?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Prohibició de canviar de carril",
+          "correcta": true
+        },
+        {
+          "id": 2,
+          "resposta": "Permís per canviar de carril",
+          "correcta": false
+        },
+        {
+          "id": 3,
+          "resposta": "Zona d'estacionament",
+          "correcta": false
+        }
+      ],
+      "imatge": "https://exemple.com/solid_line.jpg"
+    },
+    {
+      "id": 19,
+      "pregunta": "Quan es pot utilitzar el clàxon?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Per expressar frustració o ira",
+          "correcta": false
+        },
+        {
+          "id": 2,
+          "resposta": "En situacions d'emergència o per advertir a altres conductors de perill imminent",
+          "correcta": true
+        },
+        {
+          "id": 3,
+          "resposta": "Per saludar altres conductors",
+          "correcta": false
+        }
+      ],
+      "imatge": "https://exemple.com/horn.jpg"
+    },
+    {
+      "id": 20,
+      "pregunta": "Quina documentació has de portar sempre quan condueixes?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Només el permís de conduir",
+          "correcta": false
+        },
+        {
+          "id": 2,
+          "resposta": "Permís de conduir i documentació del vehicle",
+          "correcta": true
+        },
+        {
+          "id": 3,
+          "resposta": "Només la documentació del vehicle",
+          "correcta": false
+        }
+      ],
+      "imatge": "https://exemple.com/documents.jpg"
+    }
+  ]
+}
